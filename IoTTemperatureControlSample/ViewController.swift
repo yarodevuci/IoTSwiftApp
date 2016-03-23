@@ -105,6 +105,12 @@ class ViewController: UIViewController {
                 StatusLable.text = ""
             }
         }
+        
+        if (interiorTemperature == currentSetpoint)
+        {
+            interiorLabel.textColor = UIColor(white: 1.0, alpha: 1.0)
+            StatusLable.text = ""
+        }
     }
     
     func updateControl( setPoint: Int?, enabled: Bool? )
@@ -249,7 +255,7 @@ class ViewController: UIViewController {
         // Initialize the temperature and setpoint labels
         //
         interiorLabel.text="60"
-        exteriorLabel.text="45"
+        exteriorLabel.text="55"
         setpointLabel.text=setpointStepper.value.description
         //
         // Initialize the status switch
@@ -274,6 +280,8 @@ class ViewController: UIViewController {
         // A half second after subscribing to all the special topics, retrieve the current thing states.
         //
         NSTimer.scheduledTimerWithTimeInterval( 4.5, target: self, selector: "getThingStates", userInfo: nil, repeats: false )
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
